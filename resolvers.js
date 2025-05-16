@@ -13,6 +13,17 @@ module.exports = {
         total,
       };
     },
+    
+    getAnItem: (_, { id }, { userToken }) => {
+      const cart = carts.get(userToken) ;
+      
+      const item = cart.find(item => item.id === id);
+      console.log (item);
+      return {
+        ...item,
+      };
+    },
+
   },
 
   Mutation: {
@@ -21,6 +32,8 @@ module.exports = {
       carts.set(userToken, []);
       return 'Cart created';
     },
+
+    
 
     // Sepete yeni ürün ekler
     addItem: (_, { id, name, quantity, unitPrice }, { userToken }) => {

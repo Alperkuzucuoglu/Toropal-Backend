@@ -16,6 +16,7 @@ const typeDefs = gql`
 
   type Query {
     getCart: Cart!
+    getAnItem(id: ID!): Item
   }
 
   type Mutation {
